@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health & Wellness Guide — RIT Dubai</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Design Tokens ───────────────────────────────────────────── */
+    :root {
+      --rit-orange:     #F76900;
+      --rit-orange-lt:  #FF8B2E;
+      --rit-orange-dim: #FDE9D6;
+      --forest:         #2E6B4F;
+      --forest-lt:      #3D8F67;
+      --forest-pale:    #E3F2EB;
+      --cream:          #FDFAF6;
+      --ink:            #1C1A17;
+      --ink-soft:       #4A4542;
+      --border:         #E8E0D5;
+      --toc-bg:         #FEFCF9;
+      --sidebar-w:      280px;
+      --content-max:    780px;
+      --radius:         10px;
+    }
+
+    /* ── Reset / Base ────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Top Banner ──────────────────────────────────────────────── */
+    .site-banner {
+      background: var(--rit-orange);
+      color: #fff;
+      padding: 0 2rem;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 10px rgba(247,105,0,.25);
+    }
+
+    .site-banner .brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-family: 'DM Mono', monospace;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .brand-dot {
+      width: 8px; height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: .7;
+    }
+
+    .banner-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      background: rgba(255,255,255,.2);
+      border-radius: 4px;
+      padding: .2rem .55rem;
+      text-transform: uppercase;
+    }
+
+    /* ── Hero ────────────────────────────────────────────────────── */
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(46,107,79,.08) 0%, transparent 60%),
+        linear-gradient(to bottom, #fff8f2, var(--cream));
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--rit-orange-dim) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--forest-pale) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: .75rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      max-width: 640px;
+      margin: 0 auto .75rem;
+    }
+
+    .hero h1 span { color: var(--rit-orange); }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      font-style: italic;
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: 20px;
+      padding: .3rem .85rem;
+      border: 1px solid var(--border);
+      color: var(--ink-soft);
+      background: #fff;
+    }
+
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+
+    .hero-badge.orange .dot { background: var(--rit-orange); }
+    .hero-badge.green  .dot { background: var(--forest); }
+
+    /* ── Layout ──────────────────────────────────────────────────── */
+    .wiki-layout {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    /* ── Sidebar / TOC ───────────────────────────────────────────── */
+    .toc-sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      position: sticky;
+      top: 70px;
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+      background: var(--toc-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--rit-orange-dim) transparent;
+    }
+
+    .toc-sidebar::-webkit-scrollbar { width: 4px; }
+    .toc-sidebar::-webkit-scrollbar-thumb { background: var(--rit-orange-dim); border-radius: 4px; }
+
+    .toc-header {
+      font-family: 'DM Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--forest);
+      border-bottom: 2px solid var(--forest-pale);
+      padding-bottom: .6rem;
+      margin-bottom: .9rem;
+    }
+
+    .toc-list { list-style: none; }
+
+    .toc-list li { margin: .1rem 0; }
+
+    .toc-list a {
+      display: block;
+      padding: .3rem .5rem;
+      border-radius: 5px;
+      font-size: .82rem;
+      line-height: 1.35;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: background .15s, color .15s, padding-left .15s;
+    }
+
+    .toc-list a:hover {
+      background: var(--rit-orange-dim);
+      color: var(--rit-orange);
+      padding-left: .9rem;
+    }
+
+    .toc-list .toc-h1 > a {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600;
+      font-size: .88rem;
+      color: var(--ink);
+    }
+
+    .toc-list .toc-h1 { margin-top: .6rem; }
+
+    .toc-sub {
+      list-style: none;
+      padding-left: .75rem;
+      border-left: 2px solid var(--border);
+      margin: .15rem 0 .15rem .5rem;
+    }
+
+    .toc-sub a {
+      font-size: .77rem;
+      color: #7A7068;
+    }
+
+    .toc-sub a:hover {
+      background: var(--forest-pale);
+      color: var(--forest);
+    }
+
+    /* ── Main Content ────────────────────────────────────────────── */
+    .wiki-content {
+      flex: 1;
+      min-width: 0;
+      max-width: var(--content-max);
+    }
+
+    /* ── Wiki Section ────────────────────────────────────────────── */
+   /* ── Article Content Style ───────────────────────── */
+
+.wiki-section {
+  margin-bottom: 3.5rem;
+}
+
+.wiki-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .5rem;
+}
+
+/* Subsections */
+.article-block {
+  margin-bottom: 2rem;
+}
+
+.article-block h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  margin-bottom: .5rem;
+  color: var(--ink);
+}
+
+/* Paragraphs */
+.article-block p {
+  margin-bottom: 1rem;
+  color: var(--ink-soft);
+  font-size: .97rem;
+}
+
+/* Lists */
+.article-block ul {
+  padding-left: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.article-block li {
+  margin-bottom: .4rem;
+}
+
+/* Images */
+.article-block img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+/* Optional quote block */
+.article-block blockquote {
+  border-left: 3px solid var(--rit-orange);
+  padding-left: 1rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+    /* ── Divider ─────────────────────────────────────────────────── */
+    .wiki-divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, var(--rit-orange), var(--forest-lt), transparent);
+      margin: 3rem 0;
+      opacity: .35;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #fff;
+      padding: 2rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      color: #9E9690;
+      text-transform: uppercase;
+    }
+
+    .site-footer span { color: var(--rit-orange); }
+
+    /* ── Mobile hamburger menu ───────────────────────────────────── */
+    .toc-toggle {
+      display: none;
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 300;
+      background: var(--rit-orange);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 52px; height: 52px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(247,105,0,.35);
+      transition: transform .15s, box-shadow .15s;
+    }
+
+    .toc-toggle:hover { transform: scale(1.07); box-shadow: 0 6px 22px rgba(247,105,0,.45); }
+
+    /* ── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .wiki-layout { flex-direction: column; padding: 1.5rem 1rem; gap: 0; }
+
+      .toc-sidebar {
+        position: fixed;
+        top: 52px;
+        left: 0; right: 0; bottom: 0;
+        width: 100%;
+        border-radius: 0;
+        max-height: calc(100vh - 52px);
+        transform: translateX(-100%);
+        transition: transform .3s cubic-bezier(.4,0,.2,1);
+        z-index: 150;
+      }
+
+      .toc-sidebar.open { transform: translateX(0); }
+
+      .toc-toggle { display: flex; align-items: center; justify-content: center; }
+
+      .wiki-content { max-width: 100%; }
+    }
+
+    /* ── Semantic UI overrides ───────────────────────────────────── */
+    .ui.message {
+      border-left: 4px solid var(--rit-orange);
+      background: var(--rit-orange-dim);
+      color: var(--ink-soft);
+      font-family: 'Source Serif 4', serif;
+    }
+
+    .ui.label {
+      background: var(--forest-pale);
+      color: var(--forest);
+      border-radius: 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .08em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top Banner ─────────────────────────────────────────────── -->
+  <header class="site-banner">
+    <div class="brand">
+      <div class="brand-dot"></div>
+      COMM142
+      <div class="brand-dot"></div>
+      Wiki Blog
+    </div>
+    <span class="banner-tag">Health &amp; Wellness</span>
+  </header>
+
+  <!-- ── Hero ───────────────────────────────────────────────────── -->
+  <section class="hero">
+    <p class="hero-eyebrow">Student Resource Guide · RIT Dubai</p>
+    <h1>Health &amp; <span>Wellness</span> Guide</h1>
+    <p class="hero-sub">A comprehensive reference for RIT Dubai students <br> your campus, your wellbeing.</p>
+    <div class="hero-meta">
+      <span class="hero-badge orange"><span class="dot"></span> Created by: Ayesha Khan, Husna Syeda, Mariya Al Najafi, & Leen Abhari
+</span>
+    </div>
+  </section>
+
+  <!-- ── Layout ─────────────────────────────────────────────────── -->
+  <div class="wiki-layout">
+
+    <!-- ── Sidebar TOC ─────────────────────────────────────────── -->
+    <nav class="toc-sidebar" id="tocSidebar" aria-label="Table of Contents">
+      <p class="toc-header">Contents</p>
+      <ul class="toc-list">
+
+        <li class="toc-h1"><a href="#s1">1 · Introduction</a>
+          <ul class="toc-sub">
+            <li><a href="#s1-1">1.1 Purpose of the Guide</a></li>
+            <li><a href="#s1-2">1.2 Importance of Health &amp; Wellness</a></li>
+            <li><a href="#s1-3">1.3 Overview of Topics</a></li>
+          </ul>
+        </li>
+
+        <li class="toc-h1"><a href="#s2">2 · On-Campus Resources</a>
+          <ul class="toc-sub">
+            <li><a href="#s2-1">2.1 Medical &amp; Health Services</a></li>
+            <li><a href="#s2-2">2.2 Counseling &amp; Mental Health</a></li>
+          </ul>
+        </li>
+
+        <li class="toc-h1"><a href="#s3">3 · Fitness &amp; Physical Wellness</a>
+          <ul class="toc-sub">
+            <li><a href="#s3-1">3.1 Campus Fitness Facilities</a></li>
+            <li><a href="#s3-2">3.2 Sports &amp; Athletics</a></li>
+            <li><a href="#s3-3">3.3 Active Lifestyle</a></li>
+          </ul>
+        </li>
+
+        <li class="toc-h1"><a href="#s4">4 · Food &amp; Nutrition</a>
+          <ul class="toc-sub">
+            <li><a href="#s4-1">4.1 On-Campus Dining</a></li>
+            <li><a href="#s4-2">4.2 Nearby Food Options</a></li>
+            <li><a href="#s4-3">4.3 Healthy Eating Tips</a></li>
+          </ul>
+        </li>
+
+        <li class="toc-h1"><a href="#s5">5 · Online &amp; Remote Wellness</a>
+          <ul class="toc-sub">
+            <li><a href="#s5-1">5.1 Wellness During Online Learning</a></li>
+            <li><a href="#s5-2">5.2 Virtual Support Resources</a></li>
+            <li><a href="#s5-4">5.4 Self-Care Strategies</a></li>
+          </ul>
+        </li>
+
+        <li class="toc-h1"><a href="#s6">6 · Maintaining Overall Wellness</a>
+          <ul class="toc-sub">
+            <li><a href="#s6-1">6.1 Sleep &amp; Rest</a></li>
+            <li><a href="#s6-2">6.2 Stress Management</a></li>
+            <li><a href="#s6-3">6.3 Time Management</a></li>
+            <li><a href="#s6-4">6.4 When to Seek Help</a></li>
+          </ul>
+        </li>
+
+        <li class="toc-h1"><a href="#s7">7 · Conclusion</a>
+          <ul class="toc-sub">
+            <li><a href="#s7-1">7.1 Summary of Key Points</a></li>
+            <li><a href="#s7-2">7.2 Encouragement</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- ── Main Wiki Content ───────────────────────────────────── -->
+    <main class="wiki-content">
+
+      <!-- SECTION 1 -->
+      <section class="wiki-section" id="s1">
+        <h2>Introduction</h2>
+          Student life brings with it a unique set of opportunities and challenges. Balancing academic demands, 
+          social experiences, and personal responsibilities can make it difficult to prioritize health and wellness.
+           This guide is designed to help RIT Dubai students navigate those challenges by providing practical, accessible 
+           information on the resources and habits that support a healthier university experience. <br> <br>
+
+        <div class="article-block" id="s1-1">
+          <h3>Purpose of the Guide</h3>
+          <div class="placeholder-block">
+            This guide serves as a centralized resource for RIT Dubai students seeking information on 
+            health and wellness. Rather than searching across multiple platforms, students can use this 
+            guide to quickly find information on campus health services, fitness facilities, dining options, 
+            mental health support, and general wellness strategies. The goal is not to be prescriptive, but to 
+            make it easier for students to make informed decisions about their own wellbeing throughout their time at RIT Dubai.
+
+          </div>
+        </div>
+
+        <div class="article-block" id="s1-2">
+          <h3> Importance of Student Health and Wellness</h3>
+          <div class="placeholder-block">
+            Student health is about far more than avoiding illness. Research highlights that human health has a 
+            profound effect on physical performance, productivity, and overall quality of life. For university students in 
+            particular, health plays a direct role in academic performance and personal development. Studies have shown that 
+            students with chronic health conditions or poor lifestyle habits face challenges that can affect both their studies 
+            and long-term wellbeing. Structured wellness programs have demonstrated measurable improvements in students' 
+            physical health indicators, including cardiovascular and respiratory function, reinforcing the idea that intentional
+            attention to health during university years yields meaningful results. Developing healthy habits now is therefore not 
+            just beneficial for the present but rather an investment in long-term physical and mental wellbeing.
+
+          </div>
+        </div>
+
+        <div class="article-block" id="s1-3">
+          <h3> Overview of Topics Covered</h3>
+          <div class="placeholder-block">
+            This guide covers a broad range of health and wellness topics relevant to RIT Dubai students. It begins with an overview 
+            of on-campus health and counseling followed by information on fitness facilities and active lifestyle opportunities available
+            at RIT Dubai. The guide also covers food and nutrition options both on and off campus, as well as resources for students while 
+            studying remotely. It concludes with general tips on sleep, stress management, time management, and knowing when to seek help.
+
+          </div>
+        </div>
+      </section>
+
+      <hr class="wiki-divider" />
+
+      <!-- SECTION 2 -->
+      <section class="wiki-section" id="s2">
+        <h2>On-Campus Health and Wellness Resources</h2>
+
+        RIT Dubai provides students with a range of health and wellness resources designed to support their physical and mental wellbeing throughout 
+        their time at university. Knowing what is available and how to access it can make a real difference, especially during stressful periods of the academic year. <br> <br>
+
+
+        <div class="article-block" id="s2-1">
+          <h3>Medical and Health Services</h3>
+          <div class="placeholder-block">
+            All RIT Dubai students are enrolled in the university's student health insurance plan through Daman Insurance, which covers medical care and, where applicable, mental health support, including medication. Students covered by a different provider should contact their insurance company directly to understand their coverage and refer to the Student Handbook for additional information. <br><br>
+            In addition, the RIT Dubai on-campus clinic is located in Block A and is available to support students with basic medical needs and general health concerns. The clinic is open Monday to Thursday from 9:00 AM to 5:00 PM, and Friday from 8:00 AM to 12:00 PM. It is staffed by a qualified nurse and provides essential primary care services such as first aid, basic consultations, and initial medical support before referring students to external healthcare providers if needed. <br><br>
+            The RIT Dubai Health Services also sends regular emails to students with health updates, wellness tips, and information about initiatives. Students are encouraged to check their university inbox to stay informed about these communications. <br><br>
+
+          </div>
+        </div>
+
+        <div class="article-block" id="s2-2">
+          <h3>Counseling and Mental Health Support</h3>
+          <div class="placeholder-block">
+           All RIT Dubai students have access to the Student Counselor, who offers individual and group counseling in a confidential and supportive environment. Students can bring any concerns related to academic pressure, anxiety, stress, relationships, or personal wellbeing. Support options include single-session counseling, short-term weekly counseling, and group mental health workshops. A full list of external mental health resources across the UAE is also available on the RIT Dubai website.
+
+          </div>
+        </div>
+      </section>
+
+      <hr class="wiki-divider" />
+
+      <!-- SECTION 3 -->
+      <section class="wiki-section" id="s3">
+        <h2>Fitness and Physical Wellness</h2>
+
+        <div class="article-block" id="s3-1">
+          <h3><span class="sub-num">3.1</span> Campus Fitness Facilities</h3>
+          <div class="placeholder-block">
+            <span class="ph-icon">✏️</span>
+            Insert content — gym hours, equipment available, membership details.
+          </div>
+        </div>
+
+        <div class="article-block" id="s3-2">
+          <h3><span class="sub-num">3.2</span> Sports and Athletics Programs</h3>
+          <div class="placeholder-block">
+            <span class="ph-icon">✏️</span>
+            Insert content — intramural leagues, sports clubs, how to join.
+          </div>
+        </div>
+
+        <div class="article-block" id="s3-3">
+          <h3><span class="sub-num">3.3</span> Active Lifestyle Opportunities</h3>
+          <div class="placeholder-block">
+            <span class="ph-icon">✏️</span>
+            Insert content — outdoor activities, nearby parks, walking/cycling routes in Dubai.
+          </div>
+        </div>
+      </section>
+
+      <hr class="wiki-divider" />
+
+      <!-- SECTION 4 -->
+      <section class="wiki-section" id="s4">
+        
+        <h2>Food and Nutrition Options</h2>
+            
+            Maintaining a balanced diet is an important part of student wellness, and RIT Dubai students have access to a variety of food options both on and off campus. Whether you are eating between classes, fueling up after a workout, or exploring the surrounding area, knowing what is available can help you make healthier and more informed choices. <br> <br>
+
+
+        <div class="article-block" id="s4-1">
+          <h3>On-Campus Dining</h3>
+          <div class="placeholder-block">
+            
+            RIT Dubai has 4 on-campus dining options located in the cafeteria that offer students convenient access to reasonably healthy meals throughout the day. <br> <br>
+            <strong>Serranos</strong> offers a Mexican-inspired menu built around customizable burrito bowls and sandwiches. Students can choose their own proteins, toppings, and sides, which makes it easy to put together a high-protein, balanced meal that fits personal dietary needs. <br> <br>
+            <strong>Altitude</strong> is a good option for students looking for lighter meals. The menu includes made-to-order protein shakes, açaí bowls, and sandwiches, making it a practical stop before or after physical activity, or as a quick nutritious breakfast. <br> <br>
+            <strong>One Byte</strong> offers made-to-order fresh Italian-inspired dishes alongside a selection of fresh juices, making it a solid choice for students looking for a warm, wholesome meal during the day. <br> <br>
+            <strong>Qiso</strong> provides meal plans for students who prefer a more consistent approach to their daily nutrition. It also operates a small on-site supermarket stocked with healthier snack options such as protein bars, low-calorie chips, and vitamin drinks, which is convenient for grabbing something between classes.
+
+          </div>
+        </div>
+
+        <div class="article-block" id="s4-2">
+          <h3>Nearby Food Options</h3>
+          <div class="placeholder-block">
+            
+            Students who want to explore off-campus dining will find several accessible options in Dubai Silicon Oasis. <br> <br>
+            <strong>Krave</strong> is a well-established healthy eating restaurant with a location serving the DSO area. The menu covers a wide range of meals including salads, bowls, sandwiches, and breakfast items, with an emphasis on calorie-conscious cooking. It is a practical option for students who want a filling meal without having to compromise too much on nutrition. <br> <br>
+            <strong>Spinneys Kitchen</strong>, located within the nearby Spinneys supermarket, offers affordable freshly prepared meals, sandwiches, salads, and grab-and-go items. Because it is attached to a full grocery store, dorm students can also stock up on fresh produce, whole grains, and other ingredients for cooking at home making it a particularly budget-friendly destination for students trying to eat well. <br> <br>
+            Many more dining options are available nearby through food delivery platforms such as <strong>Talabat, Deliveroo, and Keeta</strong>, all of which operate and deliver to campus.
+
+          </div>
+        </div>
+
+        <div class="article-block" id="s4-3">
+          <h3>Healthy Eating Tips for Students</h3>
+          <div class="placeholder-block">
+            
+            Eating well as a student does not have to be complicated or expensive. A few simple habits can make a significant difference to your energy, focus, and overall wellbeing. <br> <br>
+            Planning your meals at the end of each week can help reduce food waste and cut unnecessary spending. When cooking, batch cooking and getting dorm-mates involved helps share costs and makes healthy eating more manageable. It also helps to keep your kitchen stocked with affordable staples like wholegrain pasta, rice, canned legumes, and frozen vegetables, so a nutritious meal is never too far away. <br> <br>
+            Aim to drink around 6 to 8 glasses of fluid a day, and be cautious with energy drinks because despite the quick boost they offer, high intake is linked to poor sleep, high blood pressure, and other negative health effects. Above all, remember that there is no one perfect diet but rather small, consistent choices that work for your lifestyle are what matter most! <br> <br>
+
+          </div>
+        </div>
+      </section>
+
+      <hr class="wiki-divider" />
+
+      <!-- SECTION 5 -->
+      <section class="wiki-section" id="s5">
+        <h2>Online and Remote Wellness Support</h2>
+
+        <div class="article-block" id="s5-1">
+          <h3><span class="sub-num">5.1</span> Wellness During Online Learning</h3>
+          <div class="placeholder-block">
+            <span class="ph-icon">✏️</span>
+            Insert content — ergonomics, screen time, staying active when studying remotely.
+          </div>
+        </div>
+
+        <div class="article-block" id="s5-2">
+          <h3><span class="sub-num">5.2</span> Virtual Health and Support Resources</h3>
+          <div class="placeholder-block">
+            <span class="ph-icon">✏️</span>
+            Insert content — rit dubar resources.
+          </div>
+        </div>
+
+        <div class="article-block" id="s5-4">
+          <h3><span class="sub-num">5.4</span> Self-Care Strategies for Remote Students</h3>
+          <div class="placeholder-block">
+            <span class="ph-icon">✏️</span>
+            Insert content — routines, social connection tips, combating isolation.
+          </div>
+        </div>
+      </section>
+
+      <hr class="wiki-divider" />
+
+      <!-- SECTION 6 -->
+      <section class="wiki-section" id="s6">
+        <h2>Tips for Maintaining Overall Wellness</h2>
+        
+        Maintaining good health during university is about more than just avoiding illness. Small, consistent habits around sleep, stress, and time management can make a significant difference to how students feel and perform day to day. <br> <br>
+
+
+        <div class="article-block" id="s6-1">
+          <h3>Sleep and Rest</h3>
+          <div class="placeholder-block">
+            Sleep is one of the most important factors in student health and academic performance.
+            The CDC recommends that adults aged 18 to 60 get at least seven hours of sleep per night. It is 
+            important to stick to a consistent sleep schedule, avoid screens before bed, and limit caffeine in 
+            the evenings to help improve sleep quality.
+
+          </div>
+        </div>
+
+        <div class="article-block" id="s6-2">
+          <h3>Stress Management</h3>
+          <div class="placeholder-block">
+              It is normal to feel stressed during university, but also important to manage it before it becomes overwhelming. 
+              The National Institute of Mental Health suggests helpful coping strategies such as keeping a journal, exercising regularly, 
+              eating regular meals, getting enough sleep, and reaching out to friends or family for support. If stress begins to interfere
+              with daily life, it may be time to seek additional help.
+          </div>
+        </div>
+
+        <div class="article-block" id="s6-3">
+          <h3>Time Management and Balance</h3>
+          <div class="placeholder-block">
+            Managing your time well can reduce stress and help you stay on top of academic and personal responsibilities.
+            Breaking tasks into smaller steps, using a planner, and setting aside time for rest and social activities can all help create a more balanced university experience.
+          </div>
+        </div>
+
+        <div class="article-block" id="s6-4">
+          <h3>When to Seek Help</h3>
+          <div class="placeholder-block">
+            Knowing when to ask for help is an important part of taking care of your wellbeing. 
+            If stress, anxiety, or other concerns are affecting your ability to study, sleep, or function day to day, it is worth reaching out. 
+            RIT Dubai students can contact the Student Counselor through the Student Affairs Department, and a full list of on and off-campus mental health resources is available on the RIT Dubai website.
+          </div>
+        </div>
+      </section>
+
+      <hr class="wiki-divider" />
+
+      <!-- SECTION 7 -->
+      <section class="wiki-section" id="s7">
+        <h2>Conclusion</h2>
+
+        <div class="article-block" id="s7-1">
+          <h3><span class="sub-num">7.1</span> Summary of Key Points</h3>
+          <div class="placeholder-block">
+            <span class="ph-icon">✏️</span>
+            Insert content — brief recap of the guide's most important takeaways.
+          </div>
+        </div>
+
+        <div class="article-block" id="s7-2">
+          <h3><span class="sub-num">7.2</span> Encouragement to Use Available Resources</h3>
+          <div class="placeholder-block">
+            <span class="ph-icon">✏️</span>
+            Insert content — motivational closing, reminder that help is available, RIT Dubai community spirit.
+          </div>
+        </div>
+      </section>
+
+    </main><!-- /wiki-content -->
+  </div><!-- /wiki-layout -->
+
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    COMM.142.603 - Introduction to Technical Communication &nbsp;|&nbsp; Wiki Blog Assignment <br>
+    Ayesha Khan, UID: 393004354 <br>
+    Husna Syeda, UID: 393005210 <br>
+    Mariya Al Najafi, UID: 764006674 <br>
+    Leen Abhari, UID: 386009820 <br>
+
+    
+  </footer>
+
+  <!-- ── Mobile TOC toggle ───────────────────────────────────────── -->
+  <button class="toc-toggle" id="tocToggle" aria-label="Toggle Table of Contents">☰</button>
+
+  <script>
+    // Mobile TOC toggle
+    const toggle = document.getElementById('tocToggle');
+    const sidebar = document.getElementById('tocSidebar');
+
+    toggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      toggle.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
+    });
+
+    // Close sidebar when a link is clicked (mobile)
+    sidebar.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 860) {
+          sidebar.classList.remove('open');
+          toggle.textContent = '☰';
+        }
+      });
+    });
+
+    // Highlight active TOC link on scroll
+    const sections = document.querySelectorAll('[id]');
+    const tocLinks = document.querySelectorAll('.toc-sidebar a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.style.removeProperty('background'));
+          const active = document.querySelector(`.toc-sidebar a[href="#${entry.target.id}"]`);
+          if (active) {
+            active.style.background = 'var(--rit-orange-dim)';
+            active.style.color = 'var(--rit-orange)';
+          }
+        }
+      });
+    }, { rootMargin: '-60px 0px -70% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
