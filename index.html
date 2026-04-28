@@ -13,6 +13,7 @@
       --rit-orange:     #F76900;
       --rit-orange-lt:  #FF8B2E;
       --rit-orange-dim: #FDE9D6;
+      --rit-orange-dark:#ED6700;
       --forest:         #2E6B4F;
       --forest-lt:      #3D8F67;
       --forest-pale:    #E3F2EB;
@@ -270,65 +271,157 @@
     }
 
     /* ── Wiki Section ────────────────────────────────────────────── */
-   /* ── Article Content Style ───────────────────────── */
+    .wiki-section {
+      margin-bottom: 3.5rem;
+    }
 
-.wiki-section {
-  margin-bottom: 3.5rem;
-}
+    .wiki-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .5rem;
+    }
 
-.wiki-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: .5rem;
-}
+    /* Subsections */
+    .article-block {
+      margin-bottom: 2rem;
+    }
 
-/* Subsections */
-.article-block {
-  margin-bottom: 2rem;
-}
+    .article-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: .5rem;
+      color: var(--ink);
+    }
 
-.article-block h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
-  margin-bottom: .5rem;
-  color: var(--ink);
-}
+    /* Paragraphs */
+    .article-block p {
+      margin-bottom: 1rem;
+      color: var(--ink-soft);
+      font-size: .97rem;
+    }
 
-/* Paragraphs */
-.article-block p {
-  margin-bottom: 1rem;
-  color: var(--ink-soft);
-  font-size: .97rem;
-}
+    /* Lists */
+    .article-block ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
 
-/* Lists */
-.article-block ul {
-  padding-left: 1.4rem;
-  margin-bottom: 1rem;
-}
+    .article-block li {
+      margin-bottom: .4rem;
+      color: var(--ink-soft);
+      font-size: .97rem;
+    }
 
-.article-block li {
-  margin-bottom: .4rem;
-}
+    /* Images */
+    .article-block img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
 
-/* Images */
-.article-block img {
-  max-width: 100%;
-  border-radius: 8px;
-  margin: 1rem 0;
-}
+    /* Image grid for multiple photos */
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin: 1rem 0;
+    }
 
-/* Optional quote block */
-.article-block blockquote {
-  border-left: 3px solid var(--rit-orange);
-  padding-left: 1rem;
-  color: var(--ink-soft);
-  font-style: italic;
-  margin: 1rem 0;
-}
+    .img-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 0;
+    }
+
+    .img-grid.three {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .img-caption {
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      color: #9E9690;
+      letter-spacing: .06em;
+      margin-top: -.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .img-grid figure {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .img-grid figcaption {
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: .80rem;
+      color: var(--rit-orange-dark);
+      letter-spacing: .06em;
+      padding: .35rem 0 .5rem;
+    }
+
+    /* Club tag pills */
+    .club-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: .75rem 0 1rem;
+    }
+
+    .club-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: var(--rit-orange-dim);
+      color: var(--rit-orange);
+      border: 1px solid #f5c49e;
+      border-radius: 20px;
+      padding: .25rem .75rem;
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .07em;
+      font-weight: 500;
+    }
+
+    /* Tip / callout box */
+    .tip-box {
+      background: var(--rit-orange-dim);
+      border-left: 4px solid var(--rit-orange);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .tip-box p {
+      margin: 0;
+      color: var(--rit-orange-dark);
+      font-size: .93rem;
+    }
+
+    .tip-box strong {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: .3rem;
+      color: var(--rit-orange-dark);
+    }
+
+    /* Optional quote block */
+    .article-block blockquote {
+      border-left: 3px solid var(--rit-orange);
+      padding-left: 1rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin: 1rem 0;
+    }
 
     /* ── Divider ─────────────────────────────────────────────────── */
     .wiki-divider {
@@ -395,6 +488,10 @@
       .toc-toggle { display: flex; align-items: center; justify-content: center; }
 
       .wiki-content { max-width: 100%; }
+
+      .img-grid { grid-template-columns: 1fr; }
+      .img-grid.three { grid-template-columns: 1fr; }
+      .img-grid img { height: 200px; }
     }
 
     /* ── Semantic UI overrides ───────────────────────────────────── */
@@ -434,8 +531,7 @@
     <h1>Health &amp; <span>Wellness</span> Guide</h1>
     <p class="hero-sub">A comprehensive reference for RIT Dubai students <br> your campus, your wellbeing.</p>
     <div class="hero-meta">
-      <span class="hero-badge orange"><span class="dot"></span> Created by: Ayesha Khan, Husna Syeda, Mariya Al Najafi, & Leen Abhari
-</span>
+      <span class="hero-badge orange"><span class="dot"></span> Created by: Ayesha Khan, Husna Syeda, Mariya Al Najafi, &amp; Leen Abhari</span>
     </div>
   </section>
 
@@ -511,47 +607,44 @@
       <!-- SECTION 1 -->
       <section class="wiki-section" id="s1">
         <h2>Introduction</h2>
-          Student life brings with it a unique set of opportunities and challenges. Balancing academic demands, 
+          Student life brings with it a unique set of opportunities and challenges. Balancing academic demands,
           social experiences, and personal responsibilities can make it difficult to prioritize health and wellness.
-           This guide is designed to help RIT Dubai students navigate those challenges by providing practical, accessible 
-           information on the resources and habits that support a healthier university experience. <br> <br>
+          This guide is designed to help RIT Dubai students navigate those challenges by providing practical, accessible
+          information on the resources and habits that support a healthier university experience. <br><br>
 
         <div class="article-block" id="s1-1">
           <h3>Purpose of the Guide</h3>
-          <div class="placeholder-block">
-            This guide serves as a centralized resource for RIT Dubai students seeking information on 
-            health and wellness. Rather than searching across multiple platforms, students can use this 
-            guide to quickly find information on campus health services, fitness facilities, dining options, 
-            mental health support, and general wellness strategies. The goal is not to be prescriptive, but to 
+          <p>
+            This guide serves as a centralized resource for RIT Dubai students seeking information on
+            health and wellness. Rather than searching across multiple platforms, students can use this
+            guide to quickly find information on campus health services, fitness facilities, dining options,
+            mental health support, and general wellness strategies. The goal is not to be prescriptive, but to
             make it easier for students to make informed decisions about their own wellbeing throughout their time at RIT Dubai.
-
-          </div>
+          </p>
         </div>
 
         <div class="article-block" id="s1-2">
-          <h3> Importance of Student Health and Wellness</h3>
-          <div class="placeholder-block">
-            Student health is about far more than avoiding illness. Research highlights that human health has a 
-            profound effect on physical performance, productivity, and overall quality of life. For university students in 
-            particular, health plays a direct role in academic performance and personal development. Studies have shown that 
-            students with chronic health conditions or poor lifestyle habits face challenges that can affect both their studies 
-            and long-term wellbeing. Structured wellness programs have demonstrated measurable improvements in students' 
+          <h3>Importance of Student Health and Wellness</h3>
+          <p>
+            Student health is about far more than avoiding illness. Research highlights that human health has a
+            profound effect on physical performance, productivity, and overall quality of life. For university students in
+            particular, health plays a direct role in academic performance and personal development. Studies have shown that
+            students with chronic health conditions or poor lifestyle habits face challenges that can affect both their studies
+            and long-term wellbeing. Structured wellness programs have demonstrated measurable improvements in students'
             physical health indicators, including cardiovascular and respiratory function, reinforcing the idea that intentional
-            attention to health during university years yields meaningful results. Developing healthy habits now is therefore not 
+            attention to health during university years yields meaningful results. Developing healthy habits now is therefore not
             just beneficial for the present but rather an investment in long-term physical and mental wellbeing.
-
-          </div>
+          </p>
         </div>
 
         <div class="article-block" id="s1-3">
-          <h3> Overview of Topics Covered</h3>
-          <div class="placeholder-block">
-            This guide covers a broad range of health and wellness topics relevant to RIT Dubai students. It begins with an overview 
+          <h3>Overview of Topics Covered</h3>
+          <p>
+            This guide covers a broad range of health and wellness topics relevant to RIT Dubai students. It begins with an overview
             of on-campus health and counseling followed by information on fitness facilities and active lifestyle opportunities available
-            at RIT Dubai. The guide also covers food and nutrition options both on and off campus, as well as resources for students while 
+            at RIT Dubai. The guide also covers food and nutrition options both on and off campus, as well as resources for students while
             studying remotely. It concludes with general tips on sleep, stress management, time management, and knowing when to seek help.
-
-          </div>
+          </p>
         </div>
       </section>
 
@@ -561,26 +654,19 @@
       <section class="wiki-section" id="s2">
         <h2>On-Campus Health and Wellness Resources</h2>
 
-        RIT Dubai provides students with a range of health and wellness resources designed to support their physical and mental wellbeing throughout 
-        their time at university. Knowing what is available and how to access it can make a real difference, especially during stressful periods of the academic year. <br> <br>
-
+        <p>RIT Dubai provides students with a range of health and wellness resources designed to support their physical and mental wellbeing throughout
+        their time at university. Knowing what is available and how to access it can make a real difference, especially during stressful periods of the academic year.</p><br>
 
         <div class="article-block" id="s2-1">
           <h3>Medical and Health Services</h3>
-          <div class="placeholder-block">
-            All RIT Dubai students are enrolled in the university's student health insurance plan through Daman Insurance, which covers medical care and, where applicable, mental health support, including medication. Students covered by a different provider should contact their insurance company directly to understand their coverage and refer to the Student Handbook for additional information. <br><br>
-            In addition, the RIT Dubai on-campus clinic is located in Block A and is available to support students with basic medical needs and general health concerns. The clinic is open Monday to Thursday from 9:00 AM to 5:00 PM, and Friday from 8:00 AM to 12:00 PM. It is staffed by a qualified nurse and provides essential primary care services such as first aid, basic consultations, and initial medical support before referring students to external healthcare providers if needed. <br><br>
-            The RIT Dubai Health Services also sends regular emails to students with health updates, wellness tips, and information about initiatives. Students are encouraged to check their university inbox to stay informed about these communications. <br><br>
-
-          </div>
+          <p>All RIT Dubai students are enrolled in the university's student health insurance plan through Daman Insurance, which covers medical care and, where applicable, mental health support, including medication. Students covered by a different provider should contact their insurance company directly to understand their coverage and refer to the Student Handbook for additional information.</p>
+          <p>In addition, the RIT Dubai on-campus clinic is located in Block A and is available to support students with basic medical needs and general health concerns. The clinic is open Monday to Thursday from 9:00 AM to 5:00 PM, and Friday from 8:00 AM to 12:00 PM. It is staffed by a qualified nurse and provides essential primary care services such as first aid, basic consultations, and initial medical support before referring students to external healthcare providers if needed.</p>
+          <p>The RIT Dubai Health Services also sends regular emails to students with health updates, wellness tips, and information about initiatives. Students are encouraged to check their university inbox to stay informed about these communications.</p>
         </div>
 
         <div class="article-block" id="s2-2">
           <h3>Counseling and Mental Health Support</h3>
-          <div class="placeholder-block">
-           All RIT Dubai students have access to the Student Counselor, who offers individual and group counseling in a confidential and supportive environment. Students can bring any concerns related to academic pressure, anxiety, stress, relationships, or personal wellbeing. Support options include single-session counseling, short-term weekly counseling, and group mental health workshops. A full list of external mental health resources across the UAE is also available on the RIT Dubai website.
-
-          </div>
+          <p>All RIT Dubai students have access to the Student Counselor, who offers individual and group counseling in a confidential and supportive environment. Students can bring any concerns related to academic pressure, anxiety, stress, relationships, or personal wellbeing. Support options include single-session counseling, short-term weekly counseling, and group mental health workshops. A full list of external mental health resources across the UAE is also available on the RIT Dubai website.</p>
         </div>
       </section>
 
@@ -590,27 +676,100 @@
       <section class="wiki-section" id="s3">
         <h2>Fitness and Physical Wellness</h2>
 
+        <p>Staying active is one of the most effective ways to support both physical and mental health during university. RIT Dubai offers students a variety of on-campus fitness facilities and sports programs, making it convenient to build exercise into daily life regardless of your schedule or fitness level.</p><br>
+
         <div class="article-block" id="s3-1">
-          <h3><span class="sub-num">3.1</span> Campus Fitness Facilities</h3>
-          <div class="placeholder-block">
-            <span class="ph-icon">✏️</span>
-            Insert content — gym hours, equipment available, membership details.
+          <h3>Campus Fitness Facilities</h3>
+          <p>RIT Dubai's sports complex, located in Block J, houses a range of modern fitness facilities available to all enrolled students. The main gym is a large, fully equipped space featuring cardio machines such as treadmills and rowing machines, a dedicated free weights area with dumbbells and barbells, cable and resistance machines, and an open functional training zone with turf for sled pushes and agility drills. Whether you are new to the gym or an experienced lifter, the facility is well-suited for a variety of training goals.</p>
+
+          <div class="img-grid">
+            <figure>
+              <img src="/images/rit-dubai-gym.png" alt="RIT Dubai main gym — weights and cardio equipment" />
+              <figcaption>Main Gym</figcaption>
+            </figure>
+            <figure>
+              <img src="/images/ladies-fitness-studio.jpg" alt="RIT Dubai ladies fitness studio" />
+              <figcaption>Ladies-Only Fitness Studio</figcaption>
+            </figure>
+          </div>
+
+          <p>In addition to the main gym, there is also a dedicated <strong>ladies-only fitness studio</strong>, providing a private and comfortable space equipped with cardio machines, free weights, resistance bands, yoga mats, and stability balls. This space is available exclusively for female students and staff.</p>
+
+          <blockquote>
+            <strong> Fitness Center Hours</strong><br>
+            Mon–Thu: 11:00 AM – 7:00 PM &nbsp;|&nbsp; Fri: 8:00 AM – 1:00 PM<br><br>
+            <strong>Ladies Only Studio Hours</strong><br>
+            Mon–Thu: 9:00 AM – 7:00 PM &nbsp;|&nbsp; Fri: 8:00 AM – 1:00 PM<br>
+            <em>Closed Saturdays &amp; Sundays.</em>
+          </blockquote>
+          
+          <div class="tip-box">
+            <strong>🪪 Entry Requirement</strong>
+            <p>A valid RIT Dubai student ID is required to access all sports complex facilities — no ID, no entry. Make sure to carry your card whenever you plan to visit.</p>
           </div>
         </div>
 
         <div class="article-block" id="s3-2">
-          <h3><span class="sub-num">3.2</span> Sports and Athletics Programs</h3>
-          <div class="placeholder-block">
-            <span class="ph-icon">✏️</span>
-            Insert content — intramural leagues, sports clubs, how to join.
+          <h3>Sports and Athletics Programs</h3>
+          <p>Beyond the gym, RIT Dubai offers a range of sports facilities and student-led clubs that make it easy to stay active in a social and competitive environment. The sports complex includes a full-size <strong>multipurpose indoor court</strong> used for basketball, volleyball, and badminton, as well as two <strong>glass-backed squash courts</strong>. Outdoors, students have access to a <strong>FIFA-standard artificial turf football pitch</strong>, which is regularly used for casual games and organized tournaments.</p>
+
+          <div class="img-grid three">
+            <figure>
+              <img src="/images/multipurpose-hall.jpg" alt="RIT Dubai multipurpose sports hall" />
+              <figcaption>Multipurpose Hall</figcaption>
+            </figure>
+            <figure>
+              <img src="/images/squash-courts.jpg" alt="RIT Dubai squash courts" />
+              <figcaption>Squash Courts</figcaption>
+            </figure>
+            <figure>
+              <img src="/images/soccer-pitch.jpg" alt="RIT Dubai outdoor football pitch" />
+              <figcaption>Football Pitch</figcaption>
+            </figure>
           </div>
+
+          <blockquote>
+            <strong> Multipurpose Hall &amp; Squash Courts Hours</strong><br>
+            Mon–Thu: 9:00 AM – 5:00 PM &nbsp;|&nbsp; Fri: 8:00 AM – 1:00 PM<br>
+            <em>Closed Saturdays &amp; Sundays.</em>
+          </blockquote>
+
+          <div class="tip-box">
+            <strong>📋 Rules &amp; Regulations</strong>
+            <p>
+              • Athletic attire is mandatory — no jeans or cargo pants.<br>
+              • Appropriate footwear only — no crocs, slides, or sandals.<br>
+              • No eating or drinking inside the multipurpose hall.<br>
+              • No smoking or vaping anywhere in the sports complex.
+            </p>
+          </div>
+
+          <p>Students can also get involved through RIT Dubai's active student clubs, which offer a great way to pursue specific sports and interests while connecting with peers who share the same passion. Current sports and wellness-related clubs include:</p>
+
+          <div class="club-tags">
+            <span class="club-tag">🏃 Running Club</span>
+            <span class="club-tag">🏋️ Powerlifting Club</span>
+            <span class="club-tag">♟️ Chess Club</span>
+          </div>
+
+          <ul>
+            <li><strong>Running Club</strong> — organizes regular group runs both on and around campus, welcoming all fitness levels from casual joggers to those training for races.</li>
+            <li><strong>Powerlifting Club</strong> — brings together students interested in strength training, with a focus on the squat, bench press, and deadlift. Members train together and support each other in developing proper technique and building strength progressively.</li>
+            <li><strong>Chess Club</strong> — offers a space for strategic thinking and friendly competition, hosting regular sessions and inter-university tournaments.</li>
+          </ul>
         </div>
 
         <div class="article-block" id="s3-3">
-          <h3><span class="sub-num">3.3</span> Active Lifestyle Opportunities</h3>
-          <div class="placeholder-block">
-            <span class="ph-icon">✏️</span>
-            Insert content — outdoor activities, nearby parks, walking/cycling routes in Dubai.
+          <h3>Active Lifestyle Opportunities</h3>
+          <p>Staying active does not have to mean spending time in the gym. Dubai Silicon Oasis (DSO), where RIT Dubai is located, offers several accessible options for students who prefer to exercise outdoors or explore the city.</p>
+
+          <p>The DSO area features a <strong>dedicated cycling and walking track</strong> that runs through the community, making it a pleasant option for an evening walk, jog, or cycle ride. The relatively quiet roads and shaded pathways in the early morning and late evening hours make outdoor exercise manageable even during the warmer months.</p>
+
+          <p>For students looking for more variety, <strong>Dubai Creek Harbour</strong> and <strong>Al Qudra Lakes</strong> are popular destinations within a short drive from campus, both offering cycling tracks and open-air recreational spaces. The <strong>Dubai Fitness Challenge</strong>, held annually, also encourages residents and students across the city to commit to 30 minutes of activity a day, with free fitness events and classes held at various locations throughout Dubai.</p>
+
+          <div class="tip-box">
+            <strong>🌤️ Timing Tip</strong>
+            <p>Due to Dubai's climate, outdoor exercise is most comfortable between October and April. During the summer months, plan your outdoor activities for early morning before 8:00 AM or after sunset to avoid the heat.</p>
           </div>
         </div>
       </section>
@@ -619,46 +778,32 @@
 
       <!-- SECTION 4 -->
       <section class="wiki-section" id="s4">
-        
         <h2>Food and Nutrition Options</h2>
-            
-            Maintaining a balanced diet is an important part of student wellness, and RIT Dubai students have access to a variety of food options both on and off campus. Whether you are eating between classes, fueling up after a workout, or exploring the surrounding area, knowing what is available can help you make healthier and more informed choices. <br> <br>
 
+        <p>Maintaining a balanced diet is an important part of student wellness, and RIT Dubai students have access to a variety of food options both on and off campus. Whether you are eating between classes, fueling up after a workout, or exploring the surrounding area, knowing what is available can help you make healthier and more informed choices.</p><br>
 
         <div class="article-block" id="s4-1">
           <h3>On-Campus Dining</h3>
-          <div class="placeholder-block">
-            
-            RIT Dubai has 4 on-campus dining options located in the cafeteria that offer students convenient access to reasonably healthy meals throughout the day. <br> <br>
-            <strong>Serranos</strong> offers a Mexican-inspired menu built around customizable burrito bowls and sandwiches. Students can choose their own proteins, toppings, and sides, which makes it easy to put together a high-protein, balanced meal that fits personal dietary needs. <br> <br>
-            <strong>Altitude</strong> is a good option for students looking for lighter meals. The menu includes made-to-order protein shakes, açaí bowls, and sandwiches, making it a practical stop before or after physical activity, or as a quick nutritious breakfast. <br> <br>
-            <strong>One Byte</strong> offers made-to-order fresh Italian-inspired dishes alongside a selection of fresh juices, making it a solid choice for students looking for a warm, wholesome meal during the day. <br> <br>
-            <strong>Qiso</strong> provides meal plans for students who prefer a more consistent approach to their daily nutrition. It also operates a small on-site supermarket stocked with healthier snack options such as protein bars, low-calorie chips, and vitamin drinks, which is convenient for grabbing something between classes.
-
-          </div>
+          <p>RIT Dubai has 4 on-campus dining options located in the cafeteria that offer students convenient access to reasonably healthy meals throughout the day.</p>
+          <p><strong>Serranos</strong> offers a Mexican-inspired menu built around customizable burrito bowls and sandwiches. Students can choose their own proteins, toppings, and sides, which makes it easy to put together a high-protein, balanced meal that fits personal dietary needs.</p>
+          <p><strong>Altitude</strong> is a good option for students looking for lighter meals. The menu includes made-to-order protein shakes, açaí bowls, and sandwiches, making it a practical stop before or after physical activity, or as a quick nutritious breakfast.</p>
+          <p><strong>One Byte</strong> offers made-to-order fresh Italian-inspired dishes alongside a selection of fresh juices, making it a solid choice for students looking for a warm, wholesome meal during the day.</p>
+          <p><strong>Qiso</strong> provides meal plans for students who prefer a more consistent approach to their daily nutrition. It also operates a small on-site supermarket stocked with healthier snack options such as protein bars, low-calorie chips, and vitamin drinks, which is convenient for grabbing something between classes.</p>
         </div>
 
         <div class="article-block" id="s4-2">
           <h3>Nearby Food Options</h3>
-          <div class="placeholder-block">
-            
-            Students who want to explore off-campus dining will find several accessible options in Dubai Silicon Oasis. <br> <br>
-            <strong>Krave</strong> is a well-established healthy eating restaurant with a location serving the DSO area. The menu covers a wide range of meals including salads, bowls, sandwiches, and breakfast items, with an emphasis on calorie-conscious cooking. It is a practical option for students who want a filling meal without having to compromise too much on nutrition. <br> <br>
-            <strong>Spinneys Kitchen</strong>, located within the nearby Spinneys supermarket, offers affordable freshly prepared meals, sandwiches, salads, and grab-and-go items. Because it is attached to a full grocery store, dorm students can also stock up on fresh produce, whole grains, and other ingredients for cooking at home making it a particularly budget-friendly destination for students trying to eat well. <br> <br>
-            Many more dining options are available nearby through food delivery platforms such as <strong>Talabat, Deliveroo, and Keeta</strong>, all of which operate and deliver to campus.
-
-          </div>
+          <p>Students who want to explore off-campus dining will find several accessible options in Dubai Silicon Oasis.</p>
+          <p><strong>Krave</strong> is a well-established healthy eating restaurant with a location serving the DSO area. The menu covers a wide range of meals including salads, bowls, sandwiches, and breakfast items, with an emphasis on calorie-conscious cooking. It is a practical option for students who want a filling meal without having to compromise too much on nutrition.</p>
+          <p><strong>Spinneys Kitchen</strong>, located within the nearby Spinneys supermarket, offers affordable freshly prepared meals, sandwiches, salads, and grab-and-go items. Because it is attached to a full grocery store, dorm students can also stock up on fresh produce, whole grains, and other ingredients for cooking at home making it a particularly budget-friendly destination for students trying to eat well.</p>
+          <p>Many more dining options are available nearby through food delivery platforms such as <strong>Talabat, Deliveroo, and Keeta</strong>, all of which operate and deliver to campus.</p>
         </div>
 
         <div class="article-block" id="s4-3">
           <h3>Healthy Eating Tips for Students</h3>
-          <div class="placeholder-block">
-            
-            Eating well as a student does not have to be complicated or expensive. A few simple habits can make a significant difference to your energy, focus, and overall wellbeing. <br> <br>
-            Planning your meals at the end of each week can help reduce food waste and cut unnecessary spending. When cooking, batch cooking and getting dorm-mates involved helps share costs and makes healthy eating more manageable. It also helps to keep your kitchen stocked with affordable staples like wholegrain pasta, rice, canned legumes, and frozen vegetables, so a nutritious meal is never too far away. <br> <br>
-            Aim to drink around 6 to 8 glasses of fluid a day, and be cautious with energy drinks because despite the quick boost they offer, high intake is linked to poor sleep, high blood pressure, and other negative health effects. Above all, remember that there is no one perfect diet but rather small, consistent choices that work for your lifestyle are what matter most! <br> <br>
-
-          </div>
+          <p>Eating well as a student does not have to be complicated or expensive. A few simple habits can make a significant difference to your energy, focus, and overall wellbeing.</p>
+          <p>Planning your meals at the end of each week can help reduce food waste and cut unnecessary spending. When cooking, batch cooking and getting dorm-mates involved helps share costs and makes healthy eating more manageable. It also helps to keep your kitchen stocked with affordable staples like wholegrain pasta, rice, canned legumes, and frozen vegetables, so a nutritious meal is never too far away.</p>
+          <p>Aim to drink around 6 to 8 glasses of fluid a day, and be cautious with energy drinks because despite the quick boost they offer, high intake is linked to poor sleep, high blood pressure, and other negative health effects. Above all, remember that there is no one perfect diet but rather small, consistent choices that work for your lifestyle are what matter most!</p>
         </div>
       </section>
 
@@ -668,27 +813,57 @@
       <section class="wiki-section" id="s5">
         <h2>Online and Remote Wellness Support</h2>
 
+        <p>Whether studying from home, traveling, or taking online courses, maintaining your wellbeing outside of campus requires a little extra intention. This section covers practical strategies and resources to help remote students stay healthy, connected, and supported.</p><br>
+
         <div class="article-block" id="s5-1">
-          <h3><span class="sub-num">5.1</span> Wellness During Online Learning</h3>
-          <div class="placeholder-block">
-            <span class="ph-icon">✏️</span>
-            Insert content — ergonomics, screen time, staying active when studying remotely.
+          <h3>Wellness During Online Learning</h3>
+          <p>Studying remotely can blur the boundaries between academic life and personal time, which often leads to increased screen time, reduced physical activity, and disrupted routines. Being mindful of a few key habits can make a significant difference to how you feel day to day.</p>
+
+          <p><strong>Set up a proper workspace.</strong> Wherever possible, study at a desk or table rather than on your bed or sofa. Position your screen at eye level to reduce neck strain, sit with your back supported, and ensure your space is well-lit. Poor posture over long study sessions can contribute to back pain and fatigue, making it harder to concentrate.</p>
+
+          <p><strong>Manage your screen time.</strong> Extended screen exposure, particularly in the evenings, can interfere with your sleep and cause eye strain. Try to take a short break every 45 to 60 minutes — stand up, stretch, or step outside briefly. Following the 20-20-20 rule can also help: every 20 minutes, look at something 20 feet away for at least 20 seconds to give your eyes a rest.</p>
+
+          <p><strong>Stay physically active.</strong> Without the natural movement that comes with commuting to campus, it is easy to spend most of the day sedentary. Try to incorporate some form of movement into your daily routine, whether that is a short walk, a home workout, or stretching between classes. Even 20 to 30 minutes of moderate activity can noticeably improve your mood, focus, and energy levels.</p>
+
+          <div class="tip-box">
+            <strong>📅 Routine Tip</strong>
+            <p>Treat online study days like campus days — get dressed, set a start time, and schedule breaks. Having a consistent daily structure helps your brain stay in "study mode" and makes it easier to switch off when the day is done.</p>
           </div>
         </div>
 
         <div class="article-block" id="s5-2">
-          <h3><span class="sub-num">5.2</span> Virtual Health and Support Resources</h3>
-          <div class="placeholder-block">
-            <span class="ph-icon">✏️</span>
-            Insert content — rit dubar resources.
-          </div>
+          <h3>Virtual Health and Support Resources</h3>
+          <p>Being off-campus does not mean being without support. RIT Dubai's core student services remain accessible remotely, and students are encouraged to reach out even when they are not on campus.</p>
+
+          <p>The <strong>Student Counselor</strong> offers sessions that can be arranged virtually for students who are studying remotely or are unable to attend in person. Students can reach out through the Student Affairs Department to request an appointment and discuss their preferred format.</p>
+
+          <p>Students covered by <strong>Daman Insurance</strong> also have access to telehealth options, which allow them to consult with a healthcare professional remotely. Students are encouraged to check their insurance coverage details or contact Daman directly for information on virtual consultation services available under their plan.</p>
+
+          <p>The <strong>RIT Dubai website</strong> maintains an updated list of mental health resources across the UAE, including helplines, online therapy platforms, and community support services. This list is accessible at any time and is a useful starting point for students looking for additional support beyond university services.</p>
+
+          <ul>
+            <li><strong>Student Counselor (virtual):</strong> Contact through Student Affairs via your RIT Dubai email</li>
+            <li><strong>Mental health resources list:</strong> Available at rit.edu/dubai/mental-health-resources</li>
+            <li><strong>Daman Insurance telehealth:</strong> Contact Daman directly or check your insurance card for the helpline number</li>
+            <li><strong>UAE National Crisis Line:</strong> 800-HOPE (4673) — available 24/7</li>
+          </ul>
         </div>
 
         <div class="article-block" id="s5-4">
-          <h3><span class="sub-num">5.4</span> Self-Care Strategies for Remote Students</h3>
-          <div class="placeholder-block">
-            <span class="ph-icon">✏️</span>
-            Insert content — routines, social connection tips, combating isolation.
+          <h3>Self-Care Strategies for Remote Students</h3>
+          <p>Remote studying can sometimes feel isolating, especially during intense academic periods. Prioritizing self-care is not a luxury — it is an essential part of maintaining the focus and resilience needed to perform well and feel good.</p>
+
+          <p><strong>Maintain a consistent daily routine.</strong> Waking up, eating, studying, and resting at consistent times helps regulate your body's internal clock and reduces the mental fatigue that comes with unstructured days. Even small rituals — like a morning coffee before your first class or a short walk after studying — can anchor your day and create a sense of normalcy.</p>
+
+          <p><strong>Stay socially connected.</strong> One of the most commonly reported challenges of remote learning is the sense of disconnection from peers. Make a conscious effort to stay in touch with classmates through group chats, study sessions over video call, or even casual catch-ups. RIT Dubai's student clubs and online communities can also be a helpful way to maintain a sense of belonging from a distance.</p>
+
+          <p><strong>Set boundaries between study and rest.</strong> Working from home makes it easy to feel like you should always be studying. Designate an end-of-day time and stick to it where possible. Close your study materials, step away from your desk, and do something that genuinely helps you relax, whether that is cooking, reading, watching a show, or spending time with family.</p>
+
+          <p><strong>Reach out when you need to.</strong> If you are feeling overwhelmed, anxious, or persistently low, please do not wait until things feel unmanageable. RIT Dubai's Student Counselor is available remotely and is there to help — reaching out early is always a sign of strength, not weakness.</p>
+
+          <div class="tip-box">
+            <strong>🤝 Remember</strong>
+            <p>You do not have to manage everything on your own. Whether it is a quick chat with a friend, a message to your professor, or booking a counseling session, small steps toward connection and support can make a significant difference to how you feel.</p>
           </div>
         </div>
       </section>
@@ -698,46 +873,27 @@
       <!-- SECTION 6 -->
       <section class="wiki-section" id="s6">
         <h2>Tips for Maintaining Overall Wellness</h2>
-        
-        Maintaining good health during university is about more than just avoiding illness. Small, consistent habits around sleep, stress, and time management can make a significant difference to how students feel and perform day to day. <br> <br>
 
+        <p>Maintaining good health during university is about more than just avoiding illness. Small, consistent habits around sleep, stress, and time management can make a significant difference to how students feel and perform day to day.</p><br>
 
         <div class="article-block" id="s6-1">
           <h3>Sleep and Rest</h3>
-          <div class="placeholder-block">
-            Sleep is one of the most important factors in student health and academic performance.
-            The CDC recommends that adults aged 18 to 60 get at least seven hours of sleep per night. It is 
-            important to stick to a consistent sleep schedule, avoid screens before bed, and limit caffeine in 
-            the evenings to help improve sleep quality.
-
-          </div>
+          <p>Sleep is one of the most important factors in student health and academic performance. The CDC recommends that adults aged 18 to 60 get at least seven hours of sleep per night. It is important to stick to a consistent sleep schedule, avoid screens before bed, and limit caffeine in the evenings to help improve sleep quality.</p>
         </div>
 
         <div class="article-block" id="s6-2">
           <h3>Stress Management</h3>
-          <div class="placeholder-block">
-              It is normal to feel stressed during university, but also important to manage it before it becomes overwhelming. 
-              The National Institute of Mental Health suggests helpful coping strategies such as keeping a journal, exercising regularly, 
-              eating regular meals, getting enough sleep, and reaching out to friends or family for support. If stress begins to interfere
-              with daily life, it may be time to seek additional help.
-          </div>
+          <p>It is normal to feel stressed during university, but also important to manage it before it becomes overwhelming. The National Institute of Mental Health suggests helpful coping strategies such as keeping a journal, exercising regularly, eating regular meals, getting enough sleep, and reaching out to friends or family for support. If stress begins to interfere with daily life, it may be time to seek additional help.</p>
         </div>
 
         <div class="article-block" id="s6-3">
           <h3>Time Management and Balance</h3>
-          <div class="placeholder-block">
-            Managing your time well can reduce stress and help you stay on top of academic and personal responsibilities.
-            Breaking tasks into smaller steps, using a planner, and setting aside time for rest and social activities can all help create a more balanced university experience.
-          </div>
+          <p>Managing your time well can reduce stress and help you stay on top of academic and personal responsibilities. Breaking tasks into smaller steps, using a planner, and setting aside time for rest and social activities can all help create a more balanced university experience.</p>
         </div>
 
         <div class="article-block" id="s6-4">
           <h3>When to Seek Help</h3>
-          <div class="placeholder-block">
-            Knowing when to ask for help is an important part of taking care of your wellbeing. 
-            If stress, anxiety, or other concerns are affecting your ability to study, sleep, or function day to day, it is worth reaching out. 
-            RIT Dubai students can contact the Student Counselor through the Student Affairs Department, and a full list of on and off-campus mental health resources is available on the RIT Dubai website.
-          </div>
+          <p>Knowing when to ask for help is an important part of taking care of your wellbeing. If stress, anxiety, or other concerns are affecting your ability to study, sleep, or function day to day, it is worth reaching out. RIT Dubai students can contact the Student Counselor through the Student Affairs Department, and a full list of on and off-campus mental health resources is available on the RIT Dubai website.</p>
         </div>
       </section>
 
@@ -748,19 +904,31 @@
         <h2>Conclusion</h2>
 
         <div class="article-block" id="s7-1">
-          <h3><span class="sub-num">7.1</span> Summary of Key Points</h3>
-          <div class="placeholder-block">
-            <span class="ph-icon">✏️</span>
-            Insert content — brief recap of the guide's most important takeaways.
-          </div>
+          <h3>Summary of Key Points</h3>
+          <p>This guide has brought together the most important health and wellness information available to RIT Dubai students in one accessible place. To briefly recap the key takeaways:</p>
+          <ul>
+            <li><strong>On-campus health services</strong> are available through the Block A clinic and Daman Insurance. The Student Counselor offers confidential support for a wide range of personal and academic concerns, both in person and remotely.</li>
+            <li><strong>Fitness facilities</strong> at RIT Dubai include a fully equipped main gym, a ladies-only studio, a multipurpose sports hall, squash courts, and an outdoor football pitch — all accessible to enrolled students at no extra cost.</li>
+            <li><strong>Student clubs</strong> such as the Running Club, Powerlifting Club, and Chess Club provide structured social and athletic communities for students to join throughout the year.</li>
+            <li><strong>On and off-campus dining</strong> options cater to a range of dietary needs and budgets, and simple habits like meal planning and staying hydrated can go a long way in supporting daily energy and focus.</li>
+            <li><strong>Remote students</strong> can maintain their wellbeing through structured routines, regular movement, staying socially connected, and accessing virtual counseling and support services available through RIT Dubai.</li>
+            <li><strong>General wellness habits</strong> — including getting enough sleep, managing stress proactively, and using time effectively — are small but powerful investments in both academic success and long-term health.</li>
+          </ul>
         </div>
 
         <div class="article-block" id="s7-2">
-          <h3><span class="sub-num">7.2</span> Encouragement to Use Available Resources</h3>
-          <div class="placeholder-block">
-            <span class="ph-icon">✏️</span>
-            Insert content — motivational closing, reminder that help is available, RIT Dubai community spirit.
-          </div>
+          <h3>Encouragement to Use Available Resources</h3>
+          <p>University is one of the most formative periods of your life, and it is okay for it to be challenging at times. What matters most is knowing that you do not have to navigate those challenges alone. RIT Dubai has a wide range of resources in place — from healthcare and counseling to fitness facilities and student clubs — and all of them exist to support you.</p>
+
+          <p>Whether you are looking to build a healthier routine, find an outlet through sport, improve your diet, or simply talk to someone during a difficult period, the support is there when you need it. The hardest part is often just taking that first step, whether that is booking a counseling appointment, walking into the gym for the first time, or joining a club you have been curious about.</p>
+
+          <p>Your wellbeing matters — not just for your grades, but for your growth, your relationships, and your experience as a student. We hope this guide makes it a little easier to find what you need and feel confident using the resources available to you.</p>
+
+          <blockquote>
+            Take care of your body. It's the only place you have to live. — Jim Rohn
+          </blockquote>
+
+          <p>From all of us who put this guide together — take care of yourself, Tigers. 🐯</p>
         </div>
       </section>
 
@@ -770,12 +938,10 @@
   <!-- ── Footer ─────────────────────────────────────────────────── -->
   <footer class="site-footer">
     COMM.142.603 - Introduction to Technical Communication &nbsp;|&nbsp; Wiki Blog Assignment <br>
-    Ayesha Khan, UID: 393004354 <br>
-    Husna Syeda, UID: 393005210 <br>
-    Mariya Al Najafi, UID: 764006674 <br>
-    Leen Abhari, UID: 386009820 <br>
-
-    
+    Ayesha Khan, UID: 393004354 &nbsp;·&nbsp;
+    Husna Syeda, UID: 393005210 &nbsp;·&nbsp;
+    Mariya Al Najafi, UID: 764006674 &nbsp;·&nbsp;
+    Leen Abhari, UID: 386009820
   </footer>
 
   <!-- ── Mobile TOC toggle ───────────────────────────────────────── -->
